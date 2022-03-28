@@ -291,7 +291,7 @@ class sspmod_aa_AA_SAML2
         
         $assertion = new \SAML2\Assertion();
         $assertion->setSubjectConfirmation(array($sc));
-        $assertionIssuer = new \SAML2\XML\saml\Issuer($this->aaEntityId)
+        $assertionIssuer = new \SAML2\XML\saml\Issuer($this->aaEntityId);
         $assertion->setIssuer($assertionIssuer);
         $assertion->setNameId($this->query->getNameId());
         $assertion->setNotBefore(time());
@@ -306,7 +306,7 @@ class sspmod_aa_AA_SAML2
         /* The Response */
         $response = new \SAML2\Response();
         $response->setRelayState($this->query->getRelayState());
-        $responseIssuer = new \SAML2\XML\saml\Issuer($this->aaEntityId)
+        $responseIssuer = new \SAML2\XML\saml\Issuer($this->aaEntityId);
         $response->setIssuer($responseIssuer);
         $response->setInResponseTo($this->query->getId());
         $response->setAssertions(array($assertion));
