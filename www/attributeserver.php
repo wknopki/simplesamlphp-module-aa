@@ -11,7 +11,7 @@ require_once('_include.php');
 
 SimpleSAML\Logger::info('SAML2.0 - AA Server: Request at SAML 2.0 Attribute Authority endpoint');
 
-$metadata = SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
+$metadata = \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
 
 $aa = new \SimpleSAML\Module\aa\AA\SAML2($metadata);
 

@@ -7,7 +7,11 @@ Implements SAML2 Attribute Authority
 /**
  *
  */
-class sspmod_aa_AA_SAML2
+
+ 
+namespace SimpleSAML\Module\aa\AA\;
+
+class SAML2
 {
     private $binding;
     private $query;
@@ -21,6 +25,7 @@ class sspmod_aa_AA_SAML2
     private $signResponse;
     private $endpointUrl;
 
+    
     public function __construct($metadata)
     {
         $this->config = \SimpleSAML\Configuration::getConfig('module_aa.php');
