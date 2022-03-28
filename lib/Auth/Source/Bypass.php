@@ -17,7 +17,10 @@
  * @author Gyula Szabó <gyufi@sztaki.hu>
  * @author Gyula Szabó <gyufi@szabocsalad.com>
  */
-class sspmod_aa_Auth_Source_Bypass extends SimpleSAML\Auth\Source
+ 
+namespace SimpleSAML\Module\aa\Auth\Source;
+
+class Bypass extends \SimpleSAML\Auth\Source
 {
     /**
      * Attribute name for the subject nameId.
