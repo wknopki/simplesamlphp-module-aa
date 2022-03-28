@@ -11,6 +11,8 @@ Implements SAML2 Attribute Authority
  
 namespace SimpleSAML\Module\aa\AA;
 
+use DOMElement;
+
 class SAML2
 {
     private $binding;
@@ -297,7 +299,8 @@ class SAML2
         
         $assertion = new \SAML2\Assertion();
         $assertion->setSubjectConfirmation(array($sc));
-        $assertionIssuer = new \SAML2\XML\saml\Issuer($this->aaEntityId);
+        $assertionDom = new DOMElement("saml:Issuer", $this->aaEntityId);
+        $assertionIssuer = new \SAML2\XML\saml\Issuer($assertionDom);
         $assertion->setIssuer($assertionIssuer);
         $assertion->setNameId($this->query->getNameId());
         $assertion->setNotBefore(time());
@@ -312,7 +315,8 @@ class SAML2
         /* The Response */
         $response = new \SAML2\Response();
         $response->setRelayState($this->query->getRelayState());
-        $responseIssuer = new \SAML2\XML\saml\Issuer($this->aaEntityId);
+        $responseDom = new DOMElement("saml:Issuer", $this->aaEntityId);
+        $responseIssuer = new \SAML2\XML\saml\Issuer($respionseDom);
         $response->setIssuer($responseIssuer);
         $response->setInResponseTo($this->query->getId());
         $response->setAssertions(array($assertion));
