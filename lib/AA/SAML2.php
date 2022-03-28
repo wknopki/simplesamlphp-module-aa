@@ -9,7 +9,7 @@ Implements SAML2 Attribute Authority
  */
 
  
-namespace SimpleSAML\Module\aa\AA\;
+namespace SimpleSAML\Module\aa\AA;
 
 class SAML2
 {
