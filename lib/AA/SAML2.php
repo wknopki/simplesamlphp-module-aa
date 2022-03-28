@@ -82,7 +82,7 @@ class SAML2
         if ($spEntityId === null) {
             throw new \SimpleSAML\Error\BadRequest('Missing <saml:Issuer> in <samlp:AttributeQuery>.');
         }
-        $dstMetadata = $metadata->getMetadata($spEntityId, 'saml20-sp-remote');
+        $dstMetadata = $metadata->getMetadata($spEntityId->getValue(), 'saml20-sp-remote');
         foreach ($dstMetadata['AssertionConsumerService'] as $acs) {
             if ($acs['Binding'] == \SAML2\Constants::BINDING_PAOS) {
                 $endpointUrl = $acs['Location'];
@@ -92,7 +92,7 @@ class SAML2
             throw new \SimpleSAML\Error\BadRequest('Missing PAOS endpointUrl in destination metadata.');
         }
 
-        $spMetadata = $metadata->getMetaDataConfig($spEntityId, 'saml20-sp-remote');
+        $spMetadata = $metadata->getMetaDataConfig($spEntityId->getValue(), 'saml20-sp-remote');
 
         $this->aaEntityId = $aaEntityId;
         $this->aaMetadata = $aaMetadata;
