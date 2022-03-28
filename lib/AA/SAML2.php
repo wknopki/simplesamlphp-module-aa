@@ -190,7 +190,8 @@ class SAML2
             header('HTTP/1.1 401 Unauthorized');
             header('WWW-Authenticate: None', false);
             echo 'Not authenticated. Neither query signature nor SSL client certificate was available.';
-            exit;
+            //ONLY WHILE TESTING
+            //exit;
         } else {
             \SimpleSAML\Logger::debug('[aa] Attribute query was authenticated.');
         }
