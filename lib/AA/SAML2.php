@@ -299,7 +299,7 @@ class SAML2
         
         $assertion = new \SAML2\Assertion();
         $assertion->setSubjectConfirmation(array($sc));
-        $assertionDom = new DOMElement("saml:Issuer", $this->aaEntityId);
+        $assertionDom = new DOMElement("Issuer", $this->aaEntityId);
         $assertionIssuer = new \SAML2\XML\saml\Issuer($assertionDom);
         $assertion->setIssuer($assertionIssuer);
         $assertion->setNameId($this->query->getNameId());
@@ -315,7 +315,7 @@ class SAML2
         /* The Response */
         $response = new \SAML2\Response();
         $response->setRelayState($this->query->getRelayState());
-        $responseDom = new DOMElement("saml:Issuer", $this->aaEntityId);
+        $responseDom = new DOMElement("Issuer", $this->aaEntityId);
         $responseIssuer = new \SAML2\XML\saml\Issuer($respionseDom);
         $response->setIssuer($responseIssuer);
         $response->setInResponseTo($this->query->getId());
