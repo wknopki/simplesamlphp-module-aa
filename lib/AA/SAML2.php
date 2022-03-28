@@ -299,6 +299,7 @@ class SAML2
         
         $assertion = new \SAML2\Assertion();
         $assertion->setSubjectConfirmation(array($sc));
+         \SimpleSAML\Logger::debug('[aa] Assertion aaEntityId '.$this->aaEntityId);
         $assertionDom = new DOMElement("saml:Issuer", $this->aaEntityId, "urn:oasis:names:tc:SAML:2.0:assertion");
         $assertionIssuer = new \SAML2\XML\saml\Issuer($assertionDom);
         $assertion->setIssuer($assertionIssuer);
