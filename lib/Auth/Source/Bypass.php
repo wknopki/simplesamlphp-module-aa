@@ -45,10 +45,10 @@ class sspmod_aa_Auth_Source_Bypass extends SimpleSAML\Auth\Source
         parent::__construct($info, $config);
 
         if (!array_key_exists('uid', $config) || !is_string($config['uid'])) {
-            throw new SimpleSAML\Error\Exception("AA configuration error, 'uid' not found or not a string.");
+            throw new \SimpleSAML\Error\Exception("AA configuration error, 'uid' not found or not a string.");
         }
 
-        SimpleSAML\Logger::debug('[aa] auth source Bypass: config uid: '.$config['uid']);
+        \SimpleSAML\Logger::debug('[aa] auth source Bypass: config uid: '.$config['uid']);
         $this->uid = $config['uid'];
     }
 
@@ -57,7 +57,7 @@ class sspmod_aa_Auth_Source_Bypass extends SimpleSAML\Auth\Source
      *
      * @param array &$state Information about the current authentication.
      */
-    public function authenticate(&$state)
+    public function authenticate(array &$state): void
     {
         assert('is_array($state)');
 

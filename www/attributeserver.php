@@ -13,7 +13,7 @@ SimpleSAML\Logger::info('SAML2.0 - AA Server: Request at SAML 2.0 Attribute Auth
 
 $metadata = SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
 
-$aa = new sspmod_aa_AA_SAML2($metadata);
+$aa = new \SimpleSAML\Module\aa\AA\SAML2($metadata);
 
 $aa->handleAttributeQuery();
 
