@@ -192,8 +192,8 @@ class SAML2
             header('HTTP/1.1 401 Unauthorized');
             header('WWW-Authenticate: None', false);
             echo 'Not authenticated. Neither query signature nor SSL client certificate was available.';
-            //ONLY WHILE TESTING
-            //exit;
+            //COMMENT ONLY WHILE TESTING
+            exit;
         } else {
             \SimpleSAML\Logger::debug('[aa] Attribute query was authenticated.');
         }
@@ -306,7 +306,7 @@ class SAML2
         $assertion->setNameId($this->query->getNameId());
         $assertion->setNotBefore(time());
         $assertion->setNotOnOrAfter(time() + $this->config->getInteger('validFor'));
-        $assertion->setValidAudiences(array($this->spEntityId));
+        $assertion->setValidAudiences(array($this->spEntityId->getValue()));
         $assertion->setAttributes($returnAttributes);
         $assertion->setAttributeNameFormat($this->attributeNameFormat);
         if ($this->signAssertion) {
@@ -317,7 +317,7 @@ class SAML2
         $response = new \SAML2\Response();
         $response->setRelayState($this->query->getRelayState());
         $responseDom = new DOMElement("saml:Issuer", $this->aaEntityId, "urn:oasis:names:tc:SAML:2.0:assertion");
-        $responseIssuer = new \SAML2\XML\saml\Issuer($respionseDom);
+        $responseIssuer = new \SAML2\XML\saml\Issuer($responseDom);
         $response->setIssuer($responseIssuer);
         $response->setInResponseTo($this->query->getId());
         $response->setAssertions(array($assertion));
