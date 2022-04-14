@@ -99,7 +99,6 @@ try {
     $technicalContactName  = $config->getString('technicalcontact_name', null);
     if ($technicalContactEmail and $technicalContactEmail !== 'na@example.org') {
         $metaBuilder->addContact(
-            'technical',
             array(
                 'contactType' => 'technical',
                 'emailAddress' => $technicalContactEmail,
